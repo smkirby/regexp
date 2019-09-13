@@ -1,0 +1,472 @@
+<html lang="en">
+<head>
+  <title>Experiment</title>
+
+  <!-- Script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="script.js"></script>
+
+  <meta charset="UTF-8">
+
+  <!-- If IE use the latest rendering engine -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Set the page to the width of the device and set the zoon level -->
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Style sheet -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    html, 
+    body,
+
+    .container-table {
+      height: 100%;
+    }
+    .container-table {
+      display: table;
+    }
+    .vertical-center-row {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .jumbotron {
+	    background-color:#FFF;
+	    color:black;
+	    font-family:cambria;
+      font-size: 9px;
+    }
+    
+    .jumbotron p {
+      font-size: 16px;
+    }
+
+    .jumbotron h1 {
+	    font-weight: bold;
+	    font-size: 22px;
+    }
+
+    .btn-group {
+      display:flex;
+    }
+    
+    .image:hover {
+      opacity:0.6;
+    }
+    
+    body {
+	    overflow-x: hidden;
+      overflow-y: hidden;
+    }
+    
+    #small1 {
+      bottom:150;
+      text-align:center;
+      position:absolute;
+      
+      left:0;
+      right:0;
+
+      margin-left: auto;
+      margin-right: auto;
+      width: 40%;
+    }
+    
+    #scale0 {
+      bottom:200;
+      text-align:center;
+      position:absolute;
+      
+      left:0;
+      right:0;
+
+      margin-left: auto;
+      margin-right: auto;
+      width: 450px;
+    }
+    
+    #rated0 {
+      bottom:550;
+      position:absolute;
+    }
+    
+    #scale1 {
+      bottom:200;
+      text-align:center;
+      position:absolute;
+      
+      left:0;
+      right:0;
+
+      margin-left: auto;
+      margin-right: auto;
+      width: 450px;
+    }
+    
+    #rated1 {
+      bottom:550;
+      position:absolute;
+    }
+    
+    
+    .container-small {
+        width: 600px;
+    }
+    
+    .container-tiny {
+        width: 450px;
+    }
+    
+    .top-buffer {   
+        margin-top:25px; 
+    }
+    
+  </style>
+</head>
+
+<body>
+  
+  <!-- Browser detection -->
+  <div id="browser_detection" style="display:none" class = "container container-table">
+    <div class="row vertical-center-row">
+      <div class="col-lg-12">
+        <div class = "jumbotron">
+          <h1>
+            Oh no, wrong browser..
+          </h1>
+          <p class = "col">
+            We have detected you are using an unsupported browser, please reopen in the experiment in Google Chrome. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  <!-- Consent form -->
+  <div class = "container">
+    <div id="consent" class = "jumbotron" style="display:none">
+      <h1>
+        Consent Form
+      </h1>
+      <p>
+        Hello and welcome to this experiment! Please read through the following consent form. If you consent to the conditions, press "I accept". If you do not consent to the conditions, please close your internet browser to exit the experiment.
+      </p>
+      <object data="https://cdn.glitch.com/c206e33e-5655-4585-be98-034842ca67bb%2FConsentForm4.pdf?v=1562142276653" type="application/pdf" width="100%" height="350px" href="ConsentForm4.pdf">
+      </object>
+      <div class="jumbotron">
+        <input type="button" id="consent_button" style="display:none" value="I accept" class = "btn btn-med btn-primary center-block"/>
+      </div>
+    </div>
+  </div>
+  
+  <!--Participant ID-->
+  <div class="container container-table" id="participantID" style="display:none">
+    <div class="row vertical-center-row">
+    <div class="jumbotron">
+        <p>Please enter your Prolific ID: </p>
+        <input type="text" id="ID" size="100" style="font-size:12px">
+        <div class="jumbotron">
+          <button id="ID_button" style="display:none" class = "btn btn-primary btn-med center-block" disabled="disabled">Next</button>
+        </div>
+    </div>
+    </div>
+  </div>
+ 
+
+  <!-- Experiment Instructions -->
+  <div id="experiment_instructions" style="display:none" class = "container container-table">
+    <div class="row vertical-center-row">
+      <div class="col-lg-12">
+        <div class = "jumbotron">
+          <h1>
+            Instructions
+          </h1>
+          <p class = "col">
+            The experiment consists of four parts. Next we will give you the instructions for part 1. Please take your time to read through them and make sure that you understand them. </p>
+            <button id="ready_for_training_instructions" style="display:none" class = "btn btn-primary btn-med center-block">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Training Instructions -->
+    <div id="training_instructions" style="display:none" class = "container container-table">
+      <div class="row vertical-center-row">
+        <div class="col-lg-12">
+          <div class = "jumbotron">
+            <h1>
+              Instructions - Part 1 of 4
+            </h1>
+            <p class = "col">
+            In this part, you will observe "small" being gestured multiple times. Just sit back and watch carefully. </p>
+            <button id="ready_for_training" style="display:none" class = "btn btn-primary btn-med pull-left">Start</button>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- images -->
+      <div class="container container-table" id="imag">
+        <div>
+          <div class="jumbotron text-center">
+            <img img src="assets/I0.gif" id="I0" style="display:none;width:310px;height:381px" class="mx-auto d-block">
+            <img img src="assets/I1.gif" id="I1" style="display:none;width:310px;height:381px" class="mx-auto d-block">
+            <img img src="assets/I2.gif" id="I2" style="display:none;width:310px;height:381px" class="mx-auto d-block">
+            <img img src="assets/I3.gif" id="I3" style="display:none;width:310px;height:381px" class="mx-auto d-block">
+            <img img src="assets/Sy4.gif" id="Sy4" style="display:none;width:310px;height:381px" class="mx-auto d-block">
+            <img img src="assets/Sy5.gif" id="Sy5" style="display:none;width:310px;height:381px" class="mx-auto d-block">
+            <img img src="assets/Sy6.gif" id="Sy6" style="display:none;width:310px;height:381px" class="mx-auto d-block">
+            <img img src="assets/Sy7.gif" id="Sy7" style="display:none;width:310px;height:381px" class="mx-auto d-block">
+            
+            <div id="small" class="container top-buffer" style="display:none"> 
+              <div style="font-size:35px" class="mx-auto d-block"> small </div>
+            </div>
+            
+            <div id="small2" class="container top-buffer" style="display:none">    
+                <img img src="assets/blank.png" style="width:310px;height:381px" class="mx-auto d-block">
+                <div style="font-size:35px" class="mx-auto d-block"> small </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Testing instructons -->
+      <div id="testing_instructions" style="display:none" class="container container-table">
+        <div class="row vertical-center-row">
+          <div class = "jumbotron">
+            <h1>
+              Instructions - Part 2 of 4
+            </h1>
+            <p>
+              Next, you will be shown "small" again. Please choose the gesture for "small" like you saw in Part 1. Make your choice by clicking on one of the gestures. This will repeat several times.
+            </p>
+            <button id="ready_for_testing" style="display:none" class = "btn btn-primary btn-med center-block">Start</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testing -->
+      <div class="container container-table container-small" style="display:none" id="testingset">
+        <div class="row vertical-center-row">
+          <div class="jumbotron">
+            <div id="small1" class="container" style="display:none"> 
+              <div style="font-size:35px" class="mx-auto d-block"> small </div>
+            </div>
+            <div class="row">
+              <button id="left_signal_button" style="display:none;width:206px;height:253px" class="pull-left btn-link image">a</button>
+              <button id="right_signal_button" style="display:none;width:206px;height:253px" class="pull-right btn-link image">b</button>
+            </div>
+            <div style="font-size:100px;color:white" class="text-center row"> | </div>
+            <!--<div style="font-size:40px" class="text-center row"> Small </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class = "container container-table" id="testing-button">
+        <div class="row vertical-center-row">
+          <div class = "jumbotron">
+            <button id="ok_button" style="display:none" class = "btn btn-primary btn-med center-block" >Next</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sliding -->
+      <div id="slider_instructions" style="display:none" class="container container-table">
+        <div class="row vertical-center-row">
+          <div class="jumbotron">
+            <h1>
+              Instructions - Part 3 of 4
+            </h1>
+            <p>
+              In Part 1, you saw "small" being gestured 10 times. How many times did you see each sign? Please make your best guess.
+            </p>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <p><button id="sl0" class="butn btn-link" style="border:none;display:none;width:100px;height:100px;" disabled="disabled">a</button></p>
+              <p><button id="sl1" class="butn btn-link" style="border:none;display:none;width:100px;height:100px" disabled="disabled">b</button></p>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+              <p style="color:white" class="top-buffer"> -----</p>
+              <div class="btn-group nowrap" role="group" aria-label="Basic example" style="font-size: 5vw">
+                <button type="button" class="btn btn-default" style="border:none" id="slider0">
+                  <p>10</p>
+                  <p style="color:white"> ----- </p>
+                  <p>0</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider1">
+                  <p>9</p>
+                  <p style="color:white"> ----- </p>
+                  <p>1</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider2">
+                  <p>8</p>
+                  <p style="color:white"> ----- </p>
+                  <p>2</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider3">
+                  <p>7</p>
+                  <p style="color:white"> ----- </p>
+                  <p>3</p> 
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider4">
+                  <p>6</p>
+                  <p style="color:white"> ----- </p>
+                  <p>4</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider5">
+                  <p>5</p>
+                  <p style="color:white"> ----- </p>
+                  <p>5</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider6">
+                  <p>4</p>
+                  <p style="color:white"> ----- </p>
+                  <p>6</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider7">
+                  <p>3</p>
+                  <p style="color:white"> ----- </p>
+                  <p>7</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider8">
+                  <p>2</p>
+                  <p style="color:white"> ----- </p>
+                  <p>8</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider9">
+                  <p>1</p>
+                  <p style="color:white"> ----- </p>
+                  <p>9</p>
+                </button>
+                <button type="button" class="btn btn-default" style="border:none" id="slider10">
+                  <p>0</p>
+                  <p style="color:white"> ----- </p>
+                  <p>10</p>
+                </button>
+              </div>
+              <p style="color:white"> ----- </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- iconicity rating instructons -->
+      <div id="iconicity_instructions" style="display:none" class="container container-table">
+        <div class="row vertical-center-row">
+          <div class = "jumbotron">
+            <h1>
+              Instructions - Part 4 of 4
+            </h1>
+            <p>
+              The gestures you have seen come from a made-up sign language. In this language, there are multiple gestures for the word "small". How easy or difficult do you think it would be for someone who does <b>not</b> know the language, to guess the gesture means "small"? Make your choice on a scale from 0 to 6 by selecting one of the numbers.
+            </p>
+            <button id="ready_for_iconicity" style="display:none" class = "btn btn-primary btn-med center-block">Start</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- iconicity rating1 -->
+      <div id="iconicity_rating1" style="display:none" class ="container container-table container-tiny">
+        <div class="row vertical-center-row">
+            <div class="jumbotron">
+              <div class="mx-auto d-block" id="rated0">
+                <button id="r0" class="butn btn-link" style="border:none;display:none;width:100px;height:100px" disabled="disabled">a</button>
+              </div>
+              <div id="scale0">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="font-weight:bold;font-size:15px"> Easy </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                  <div class="btn-group nowrap" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-default" style="border:none" id="icona0"> 0 </button>
+                    <button type="button" class="btn btn-default" style="border:none" id="icona1"> 1 </button>
+                    <button type="button" class="btn btn-default" style="border:none" id="icona2"> 2 </button>
+                    <button type="button" class="btn btn-default" style="border:none" id="icona3"> 3 </button>
+                    <button type="button" class="btn btn-default" style="border:none" id="icona4"> 4 </button>
+                    <button type="button" class="btn btn-default" style="border:none" id="icona5"> 5 </button>
+                    <button type="button" class="btn btn-default" style="border:none" id="icona6"> 6 </button>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-weight:bold;font-size:15px"> Difficult </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      <!-- next button -->
+      <div class = "container container-table" id="iconicity-button">
+        <div class="row vertical-center-row">
+          <div class = "jumbotron">
+            <button id="next_button" style="display:none" class = "btn btn-primary btn-med center-block" >Next</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- iconicity rating2 -->
+      <div id="iconicity_rating2" style="display:none" class ="container container-table container-tiny">
+        <div class="row vertical-center-row">
+            <div class="jumbotron">
+              <div class="mx-auto d-block" id="rated1">
+                <button id="r1" class="butn btn-link" style="border:none;display:none;width:100px;height:100px" disabled="disabled">a</button>
+              </div>
+              <div id="scale1">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="font-weight:bold;font-size:15px"> Easy </div>
+              <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                <div class="btn-group nowrap" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-default" style="border:none" id="iconb0"> 0 </button>
+                  <button type="button" class="btn btn-default" style="border:none" id="iconb1"> 1 </button>
+                  <button type="button" class="btn btn-default" style="border:none" id="iconb2"> 2 </button>
+                  <button type="button" class="btn btn-default" style="border:none" id="iconb3"> 3 </button>
+                  <button type="button" class="btn btn-default" style="border:none" id="iconb4"> 4 </button>
+                  <button type="button" class="btn btn-default" style="border:none" id="iconb5"> 5 </button>
+                  <button type="button" class="btn btn-default" style="border:none" id="iconb6"> 6 </button>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="font-weight:bold;font-size:15px"> Difficult </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+    <!--Questionnaire -->
+    <div id="questions" class="container container-table" style="display:none">
+      <div class="row vertical-center-row">
+        <div class="jumbotron">
+          <h1 >
+            One last question.. 
+          </h1>
+          <p> Did you use pen/pencil and paper to complete the experiment? </p>
+          <p style="font-size:13px">
+            (the answer to this question will not affect the acceptance/rejection of your submission)
+          </p>
+          <div class="btn-group nowrap" role="group">
+              <button type="button" class="btn btn-default" style="border:none" id="question0"> No </button>
+              <button type="button" class="btn btn-default" style="border:none" id="question1"> Yes </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- finale -->
+      <div id="thanks" class="container container-table" style="display:none">
+        <div class="row vertical-center-row">
+          <div class="col-lg-12">
+          <div class="jumbotron">
+            <h1> Thank you for participating! </h1>
+              <p class="col">
+              Please follow the link below so we know you have completed the experiment. </p>
+              <a href="https://app.prolific.ac/submissions/complete?cc=BLYZMOXS" style="font-size:20px">https://app.prolific.ac/submissions/complete?cc=BLYZMOXS</a>
+              
+              <div id="userID" class="col jumbotron" style="font-size:20px;font-weight:bold;display:none">
+                A000000 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </body>
+    </html>

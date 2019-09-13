@@ -1,0 +1,32 @@
+html, body, .container-table {
+    height: 100%;
+}
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.jumbotron {
+	background-color:#FFF;
+	color:black;
+	font-family:cambria;
+}
+
+.jumbotron h1 {
+	font-weight: bold;
+	font-size: 32px;
+}
+
+.btn-group {
+  display: flex;
+}
+
+body {
+	overflow-y: hidden;
+	overflow-x: hidden;
+
+
+}
